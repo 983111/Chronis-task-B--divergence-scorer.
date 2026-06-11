@@ -1,17 +1,60 @@
 {
   "fitness": {
-    "alignment_score": 0.33,
-    "classification": "understatement"
+    "alignment_score": 0.62,
+    "semantic_similarity": 0.71,
+    "count_ratio_score": 0.5,
+    "classification": "aligned",
+    "confidence": {
+      "n_total": 6,
+      "interval": [0.345, 0.655],
+      "width": 0.31,
+      "reliability": "moderate"
+    }
   },
   "career": {
-    "alignment_score": 0.33,
-    "classification": "aspiration_gap"
+    "alignment_score": 0.07,
+    "semantic_similarity": 0.05,
+    "count_ratio_score": 0.2,
+    "classification": "aspiration_gap",
+    "confidence": {
+      "n_total": 5,
+      "interval": [0.31, 0.69],
+      "width": 0.38,
+      "reliability": "moderate"
+    }
   },
   "reading": {
     "alignment_score": 0.0,
-    "classification": "blind_spot"
+    "semantic_similarity": 0.0,
+    "count_ratio_score": 0.0,
+    "classification": "blind_spot",
+    "confidence": {
+      "n_total": 3,
+      "interval": [0.206, 0.794],
+      "width": 0.588,
+      "reliability": "low"
+    }
   },
   "finance": {
-    "classification": "insufficient_evidence"
+    "alignment_score": 0.79,
+    "semantic_similarity": 0.83,
+    "count_ratio_score": 0.75,
+    "classification": "aligned",
+    "confidence": {
+      "n_total": 8,
+      "interval": [0.335, 0.665],
+      "width": 0.33,
+      "reliability": "moderate"
+    }
+  },
+  "social": {
+    "classification": "insufficient_evidence",
+    "abstention_reason": "Insufficient behavioral evidence: 1 event(s) observed, minimum required is 2.",
+    "confidence": {
+      "n_total": 4,
+      "interval": [0.24, 0.76],
+      "width": 0.52,
+      "reliability": "low"
+    }
   }
 }
