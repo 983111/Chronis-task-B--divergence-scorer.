@@ -148,9 +148,30 @@ MIN_TOTAL_EVIDENCE = 3     # combined floor
 def abstain_reason(behaviors: List[str], self_talk: List[str]) -> Optional[str]:
     """
     Return a reason string if we should abstain, else None.
-    More rigorous than a simple threshold.
+
+    Blind Spot and Aspiration Gap are structurally defined by an asymmetry
+    (many behaviors / zero self-talk, or many self-talk / minimal behavior).
+    These patterns are themselves the signal — they are exempt from the
+    symmetric evidence requirements and checked first.
+
+    For all other types (overstatement, understatement, aligned) we require
+    both sides to have sufficient evidence before committing to a label.
     """
     nb, ns = len(behaviors), len(self_talk)
+
+    # --- Type-specific exemptions (asymmetric by definition) ----------------
+
+    # Blind Spot: behaviorally prominent, narratively absent.
+    # Requires ≥ 3 behavioral events; zero self-talk is the defining feature.
+    if nb >= 3 and ns == 0:
+        return None   # valid blind_spot — do not abstain
+
+    # Aspiration Gap: narratively prominent, behaviorally absent/flat.
+    # Requires ≥ 3 self-talk entries; ≤ 1 behavior is the defining feature.
+    if ns >= 3 and nb <= 1:
+        return None   # valid aspiration_gap — do not abstain
+
+    # --- Symmetric evidence requirements for all other types ----------------
 
     if nb < MIN_BEHAVIORS:
         return (
@@ -170,7 +191,7 @@ def abstain_reason(behaviors: List[str], self_talk: List[str]) -> Optional[str]:
             f"minimum required is {MIN_TOTAL_EVIDENCE}."
         )
 
-    return None          # proceed with analysis
+    return None   # proceed with analysis
 
 
 # ---------------------------------------------------------------------------
