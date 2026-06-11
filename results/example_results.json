@@ -1,0 +1,17 @@
+{
+  "fitness": {
+    "alignment_score": 0.33,
+    "classification": "understatement"
+  },
+  "career": {
+    "alignment_score": 0.33,
+    "classification": "aspiration_gap"
+  },
+  "reading": {
+    "alignment_score": 0.0,
+    "classification": "blind_spot"
+  },
+  "finance": {
+    "classification": "insufficient_evidence"
+  }
+}
